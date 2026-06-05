@@ -1,0 +1,169 @@
+// ScamShield AI Prisma schema (Phase 2)
+// This schema is designed for a SaaS app with authenticated users,
+// scans, reports, saved reports, and community submissions.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ThreatCategory {
+  PHISHING
+  FAKE_JOB_OFFER
+  OTP_SCAM
+  UPI_FRAUD
+  INVESTMENT_SCAM
+  CRYPTO_SCAM
+  ROMANCE_SCAM
+  LOTTERY_SCAM
+  DELIVERY_SCAM
+  TECH_SUPPORT_SCAM
+  IMPERSONATION_SCAM
+  DEEPFAKE_SCAM
+}
+
+enum ScanInputType {
+  TEXT
+  IMAGE
+  PDF
+  VIDEO
+  URL
+  EMAIL
+  SOCIAL_MEDIA
+  JOB_OFFER
+  QR_CODE
+}
+
+enum ScanStatus {
+  QUEUED
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+model User {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  name          String?
+  passwordHash  String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  scans         Scan[]
+  reports       Report[]
+  savedReports  SavedReport[]
+  communityReports CommunityReport[]
+  activityLogs  ActivityLog[]
+
+  @@index([createdAt])
+}
+
+model Scan {
+  id            String      @id @default(cuid())
+  userId        String
+  user          User        @relation(fields: [userId], references: [id])
+
+  inputType     ScanInputType
+  inputText     String?
+  inputUrl      String?
+
+  // We store file metadata (production can store in S3/local).
+  inputMimeType String?
+  inputFileName String?
+
+  status        ScanStatus  @default(COMPLETED)
+  riskScore     Int         // 0-100
+  trustScore    Int         // 0-100
+  confidence    Float       // 0-1
+
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  threatCategories ThreatCategoryOnScan[]
+  report        Report?
+
+  @@index([userId, createdAt])
+}
+
+model Report {
+  id        String   @id @default(cuid())
+  scanId    String   @unique
+  scan      Scan     @relation(fields: [scanId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+
+  summary   String
+
+  // JSON structure for explainability.
+  explanation Json
+
+  recommendations Json
+  safetyChecklist Json
+
+  savedBy    SavedReport[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
+model ThreatCategoryOnScan {
+  scanId   String
+  scan      Scan @relation(fields: [scanId], references: [id], onDelete: Cascade)
+
+  category ThreatCategory
+
+  @@id([scanId, category])
+  @@index([category])
+}
+
+model SavedReport {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  reportId  String
+  report    Report   @relation(fields: [reportId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@unique([userId, reportId])
+  @@index([userId, createdAt])
+}
+
+model CommunityReport {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  title       String
+  description String
+  category    ThreatCategory
+  evidence    Json?
+
+  isPublic    Boolean  @default(true)
+  isFlagged   Boolean  @default(false)
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([category, createdAt])
+}
+
+model ActivityLog {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  action    String
+  meta       Json?
+
+  createdAt DateTime @default(now())
+
+  @@index([userId, createdAt])
+}
+
