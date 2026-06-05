@@ -1,6 +1,6 @@
-# TruthLens - Scam Detection & Digital Safety Platform
+# 🛡️ TruthLens - Scam Detection & Digital Safety Platform
 
-## Overview
+## 📖 Overview
 
 TruthLens is a full stack cybersecurity platform designed to help users identify scams, phishing attempts, fraudulent websites, fake job offers, suspicious messages, and potentially harmful digital content.
 
@@ -10,9 +10,9 @@ TruthLens aims to improve digital safety by enabling users to make informed deci
 
 ---
 
-## Key Features
+## 🚀 Key Features
 
-### Universal Threat Scanner
+### 🔍 Universal Threat Scanner
 
 Analyze multiple forms of digital content through a unified scanning interface.
 
@@ -36,11 +36,11 @@ The scanner generates:
 
 ---
 
-### Intelligent Trust Report Generation
+### 📊 Intelligent Trust Report Generation
 
 Every scan produces a detailed Trust Report containing:
 
-#### Threat Classification
+#### 🏷️ Threat Classification
 
 Automatically categorizes content into:
 
@@ -52,7 +52,7 @@ Automatically categorizes content into:
 * Fraudulent Website
 * Potentially Safe Content
 
-#### Evidence Based Analysis
+#### 🧩 Evidence Based Analysis
 
 Provides:
 
@@ -61,7 +61,7 @@ Provides:
 * Explanation of findings
 * Reasoning behind classification
 
-#### Recommended Actions
+#### ✅ Recommended Actions
 
 Generates practical guidance such as:
 
@@ -73,7 +73,7 @@ Generates practical guidance such as:
 
 ---
 
-### Website Trust Analysis
+### 🌐 Website Trust Analysis
 
 Analyze suspicious URLs and websites.
 
@@ -93,7 +93,7 @@ Generates:
 
 ---
 
-### Image & Screenshot Analysis
+### 🖼️ Image & Screenshot Analysis
 
 Upload screenshots containing:
 
@@ -107,7 +107,7 @@ The platform extracts relevant information and evaluates the content for indicat
 
 ---
 
-### Authentication & User Management
+### 🔐 Authentication & User Management
 
 Secure authentication system with:
 
@@ -118,7 +118,7 @@ Secure authentication system with:
 
 ---
 
-### Report Management
+### 📁 Report Management
 
 Users can:
 
@@ -129,7 +129,7 @@ Users can:
 
 ---
 
-## User Workflow
+## 🔄 User Workflow
 
 1. Create an account or sign in.
 2. Submit suspicious content through the Scanner.
@@ -140,9 +140,9 @@ Users can:
 
 ---
 
-## System Architecture
+## 🏗️ System Architecture
 
-### Frontend
+### 🎨 Frontend
 
 Built using modern web technologies:
 
@@ -162,7 +162,7 @@ Provides:
 
 ---
 
-### Backend
+### ⚙️ Backend
 
 Powered by:
 
@@ -180,9 +180,9 @@ Responsibilities:
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
-### apps/web
+### 🌍 apps/web
 
 Frontend application and API routes.
 
@@ -194,7 +194,7 @@ Contains:
 * Report pages
 * Dashboard functionality
 
-### packages/db
+### 🗄️ packages/db
 
 Database layer.
 
@@ -205,13 +205,13 @@ Contains:
 * Migration utilities
 * Data access logic
 
-### packages/types
+### 🧾 packages/types
 
 Shared application types and interfaces.
 
 ---
 
-## Security & Reliability
+## 🛡️ Security & Reliability
 
 TruthLens is designed with resilience in mind.
 
@@ -228,7 +228,7 @@ Even if database services become unavailable, users can continue generating Trus
 
 ---
 
-## Future Roadmap
+## 🔮 Future Roadmap
 
 Planned enhancements:
 
@@ -244,7 +244,7 @@ Planned enhancements:
 
 ---
 
-## Impact
+## 🌟 Impact
 
 TruthLens addresses a growing cybersecurity challenge by helping users identify digital threats before they become victims of fraud, phishing, impersonation, or online scams.
 
