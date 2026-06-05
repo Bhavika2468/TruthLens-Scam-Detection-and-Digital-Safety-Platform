@@ -79,10 +79,20 @@ TruthLens is a web platform that helps users identify suspicious scam/phishing c
 ---
 
 ## Tech Stack
-- Next.js (App Router)
-- TypeScript
-- Prisma (database layer; best-effort persistence)
-- Tailwind CSS
+Frontend:
+
+Next.js 15 App Router
+TypeScript
+Tailwind CSS
+shadcn/ui
+Framer Motion
+Recharts
+
+Backend:
+
+Next.js API Routes
+PostgreSQL
+Prisma ORM
 
 ---
 
@@ -115,8 +125,4 @@ TruthLens is a web platform that helps users identify suspicious scam/phishing c
 - If you see Prisma-related errors, verify `DATABASE_URL` and Prisma schema setup.
 
 ---
-
-## License
-See `LICENSE`.
-
 
