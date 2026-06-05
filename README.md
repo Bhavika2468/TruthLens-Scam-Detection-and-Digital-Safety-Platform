@@ -4,7 +4,7 @@
 
 TruthLens is a full stack cybersecurity platform designed to help users identify scams, phishing attempts, fraudulent websites, fake job offers, suspicious messages, and potentially harmful digital content.
 
-The platform performs multimodal trust analysis on user provided inputs and generates a comprehensive **Trust Report** containing risk assessments, threat classifications, evidence based explanations, and actionable safety recommendations.
+The platform performs multimodal trust analysis on user provided inputs and generates a comprehensive Trust Report containing risk assessments, threat classifications, evidence based explanations, and actionable safety recommendations.
 
 TruthLens aims to improve digital safety by enabling users to make informed decisions before interacting with potentially malicious online content.
 
@@ -249,3 +249,5 @@ Planned enhancements:
 TruthLens addresses a growing cybersecurity challenge by helping users identify digital threats before they become victims of fraud, phishing, impersonation, or online scams.
 
 The platform combines trust analysis, threat detection, and actionable guidance into a single user-friendly experience, making cybersecurity more accessible to everyday users.
+
+**Made with ❤️ by Bhavika**
